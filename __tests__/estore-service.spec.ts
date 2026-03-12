@@ -20,7 +20,7 @@ afterAll(async () => {
   await client.close()
 })
 
-describe('StoreService', () => {
+describe('EStoreService', () => {
   describe('set', () => {
     describe('record does not exist', () => {
       test('index is the next index', async () => {
