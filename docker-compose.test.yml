@@ -1,0 +1,14 @@
+services:
+  test:
+    build:
+      dockerfile: Dockerfile.test
+      context: .
+      args:
+        - 'HTTP_PROXY'
+        - 'HTTPS_PROXY'
+    depends_on:
+      - estore
+    command: test
+
+  estore:
+    image: 'blackglory/estore:0.4.0'
