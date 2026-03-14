@@ -114,7 +114,7 @@ describe('EStoreService', () => {
       expect(result).toStrictEqual(record)
     })
 
-    test('event does not exist', async () => {
+    test('record does not exist', async () => {
       const store = new EStoreService<JSONValue>(
         client
       , 'namespace'
@@ -128,6 +128,47 @@ describe('EStoreService', () => {
       const result = await store.get(0)
 
       expect(result).toBeUndefined()
+    })
+  })
+
+  describe('pop', () => {
+    test('record exists', async () => {
+      const store = new EStoreService<JSONValue>(
+        client
+      , 'namespace'
+      , 'item'
+      , {
+          fromJSONValue: passThrough
+        , toJSONValue: passThrough
+        }
+      )
+      const record: IRecord<string> = {
+        type: 'result'
+      , value: 'value'
+      }
+      await store.set(0, record)
+
+      const result = await store.pop()
+
+      expect(result).toBeUndefined()
+      expect(await store.dump()).toStrictEqual([])
+    })
+
+    test('record does not exist', async () => {
+      const store = new EStoreService<JSONValue>(
+        client
+      , 'namespace'
+      , 'item'
+      , {
+          fromJSONValue: passThrough
+        , toJSONValue: passThrough
+        }
+      )
+
+      const result = await store.pop()
+
+      expect(result).toBeUndefined()
+      expect(await store.dump()).toStrictEqual([])
     })
   })
 

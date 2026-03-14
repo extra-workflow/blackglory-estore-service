@@ -11,4 +11,4 @@ services:
     command: test
 
   estore:
-    image: 'blackglory/estore:0.4.0'
+    image: 'blackglory/estore:0.4.1'
