@@ -13,6 +13,7 @@ class EStoreService<T> implements IStore<T> {
   constructor(
     client: EStoreClient
   , namespace: string
+  , itemId: string
   , options: {
       toJSONValue: (value: T) => JSONValue
       fromJSONValue: (json: JSONValue) => T
