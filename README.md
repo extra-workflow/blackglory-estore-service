@@ -6,6 +6,10 @@ npm install --save @extra-workflow/blackglory-estore-service
 yarn add @extra-workflow/blackglory-estore-service
 ```
 
+## Limitations
+Since EStore restricts events to be written strictly in index order,
+**the results of fan-out calls cannot be written correctly**.
+
 ## API
 ### EStoreService
 ```ts
